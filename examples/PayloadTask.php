@@ -10,7 +10,7 @@ namespace Bmack\Kart\Examples;
  * file that is distributed with this source code.
  */
 
-use Psr\Event\Dispatcher\TaskInterface;
+use Psr\EventDispatcher\TaskInterface;
 
 /**
  * Modifies payload shipped with a task. VERY generic

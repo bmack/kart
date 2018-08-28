@@ -10,13 +10,13 @@ namespace Bmack\Kart;
  * file that is distributed with this source code.
  */
 
-use Psr\Event\Dispatcher\EventInterface;
-use Psr\Event\Dispatcher\ListenerProviderInterface;
-use Psr\Event\Dispatcher\MessageInterface;
-use Psr\Event\Dispatcher\MessageNotifierInterface;
-use Psr\Event\Dispatcher\StoppableTaskInterface;
-use Psr\Event\Dispatcher\TaskInterface;
-use Psr\Event\Dispatcher\TaskProcessorInterface;
+use Psr\EventDispatcher\EventInterface;
+use Psr\EventDispatcher\ListenerProviderInterface;
+use Psr\EventDispatcher\MessageInterface;
+use Psr\EventDispatcher\MessageNotifierInterface;
+use Psr\EventDispatcher\StoppableTaskInterface;
+use Psr\EventDispatcher\TaskInterface;
+use Psr\EventDispatcher\TaskProcessorInterface;
 
 /**
  * The main dispatcher, handles everything

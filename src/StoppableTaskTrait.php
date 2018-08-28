@@ -10,7 +10,7 @@ namespace Bmack\Kart;
  * file that is distributed with this source code.
  */
 
-use Psr\Event\Dispatcher\StoppableTaskInterface;
+use Psr\EventDispatcher\StoppableTaskInterface;
 
 /**
  * Can be added to any task which a listener can intercept

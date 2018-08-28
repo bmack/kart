@@ -11,7 +11,7 @@ namespace Bmack\Kart\Examples;
  */
 
 use Bmack\Kart\StoppableTaskTrait;
-use Psr\Event\Dispatcher\StoppableTaskInterface;
+use Psr\EventDispatcher\StoppableTaskInterface;
 
 /**
  * VERY generic to see if a task can be stopped

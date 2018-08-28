@@ -2,9 +2,10 @@
 
 ## PSR glitches found while implementing
 
-- An `UnaccetableListenerException` seems to be more than appropriate, as this safety net while looking for a listener should be included in every implementation
+- An `UnacceptableListenerException` seems to be more than appropriate, as this safety net while looking for a listener should be included in every implementation
 
-- TaskProcessor -> a listener could receive a Task but return a `StoppableTask`, or VICE VERSA. This actually would take away the power for the caller / library author to decide whether it was stopped.
+- `TaskProcessor` -> a listener could receive a Task but return a `StoppableTask`, or VICE VERSA. This actually would take away the power for the caller / library author to decide whether it was stopped.
+=> fixed.
 
 - We might should just take into consideration what people could do when you have something that is extended from a `EventInterface` but does not deal with `TaskInterface` or `MessageInterface`
 

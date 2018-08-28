@@ -10,8 +10,8 @@ namespace Bmack\Kart;
  * file that is distributed with this source code.
  */
 
-use Psr\Event\Dispatcher\EventInterface;
-use Psr\Event\Dispatcher\ListenerProviderInterface;
+use Psr\EventDispatcher\EventInterface;
+use Psr\EventDispatcher\ListenerProviderInterface;
 
 /**
  * Easy listener provider to add custom listeners at any time.

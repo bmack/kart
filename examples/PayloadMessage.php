@@ -10,7 +10,7 @@ namespace Bmack\Kart\Examples;
  * file that is distributed with this source code.
  */
 
-use Psr\Event\Dispatcher\MessageInterface;
+use Psr\EventDispatcher\MessageInterface;
 
 /**
  * A generic message with some payload
