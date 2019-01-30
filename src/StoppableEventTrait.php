@@ -10,15 +10,14 @@ namespace Bmack\Kart;
  * file that is distributed with this source code.
  */
 
-use Psr\EventDispatcher\StoppableTaskInterface;
+use Psr\EventDispatcher\StoppableEventInterface;
 
 /**
- * Can be added to any task which a listener can intercept
+ * Can be added to any event which a listener can intercept
  */
-trait StoppableTaskTrait
+trait StoppableEventTrait
 {
     /**
-     * @todo debateable if it is private or protected
      * @var bool
      */
     private $isPropagationStopped = false;
@@ -26,7 +25,7 @@ trait StoppableTaskTrait
     /**
      * @inheritdoc
      */
-    public function stopPropagation() : StoppableTaskInterface
+    public function stopPropagation() : StoppableEventInterface
     {
         $this->isPropagationStopped = true;
         return $this;
@@ -35,7 +34,7 @@ trait StoppableTaskTrait
     /**
      * @inheritdoc
      */
-    public function isStopped() : bool
+    public function isPropagationStopped() : bool
     {
         return $this->isPropagationStopped;
     }

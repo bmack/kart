@@ -1,20 +1,30 @@
-# Test implementation for PSR-14 draft
+# Simple implementation for PSR-14
 
-## PSR glitches found while implementing
+This repository is based on PHP-FIG PSR-14 v0.7.
 
-- An `UnacceptableListenerException` seems to be more than appropriate, as this safety net while looking for a listener should be included in every implementation
+## What does it do?
 
-- `TaskProcessor` -> a listener could receive a Task but return a `StoppableTask`, or VICE VERSA. This actually would take away the power for the caller / library author to decide whether it was stopped.
-=> fixed.
+This package ships with a simple dispatcher, and a listener provider which can be populated during
+runtime. The `StoppableEventTrait` allows for easy usage when a task can be interrupted.
 
-- We might should just take into consideration what people could do when you have something that is extended from a `EventInterface` but does not deal with `TaskInterface` or `MessageInterface`
+Some example events for the tests can be found in `examples/`.
 
-- `EventErrorInterface` is not hinted in docs anyway - why should I use it?
+Play around by calling `composer test` and have a look at the examples to build your
+own PSR-14 implementation. It's fairly straightforward.
 
-- `StoppableTaskInterface->isStopped`: Comment states that it is typically only used for dispatcher, which is not the case
+## Things I like about PSR-14
 
-### Common issues when developing
+* It is based on PHP 7.2+, thus no marker interface is needed, as we deal with PHP's
+simple type `object`.
+* No more identification of Events based on `string` other any kind of `getName()` of
+event objects.
+* Do-it-yourself for the listener provider, build the one you need.
 
-- All tasks need to return a `TaskInterface` object - enforce it? Detect it?
 
-- What about `function (MyTask $task) use ($something) { $something->nice(); return $task; }`
+## License
+
+MIT
+
+## Author
+
+Benni Mack, 2018-2019

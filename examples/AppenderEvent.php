@@ -10,12 +10,10 @@ namespace Bmack\Kart\Examples;
  * file that is distributed with this source code.
  */
 
-use Psr\EventDispatcher\TaskInterface;
-
 /**
  * Appends arbitrary data
  */
-class AppenderTask implements TaskInterface
+class AppenderEvent
 {
     private $data = [];
 
@@ -27,5 +25,10 @@ class AppenderTask implements TaskInterface
     public function append($value)
     {
         $this->data[] = $value;
+    }
+
+    public function get()
+    {
+        return $this->data;
     }
 }

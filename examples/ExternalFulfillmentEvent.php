@@ -10,15 +10,15 @@ namespace Bmack\Kart\Examples;
  * file that is distributed with this source code.
  */
 
-use Bmack\Kart\StoppableTaskTrait;
-use Psr\EventDispatcher\StoppableTaskInterface;
+use Bmack\Kart\StoppableEventTrait;
+use Psr\EventDispatcher\StoppableEventInterface;
 
 /**
  * VERY generic to see if a task can be stopped
  */
-class ExternalFulfillmentTask implements StoppableTaskInterface
+class ExternalFulfillmentEvent implements StoppableEventInterface
 {
-    use StoppableTaskTrait;
+    use StoppableEventTrait;
 
     protected $jobNumber = 0;
 

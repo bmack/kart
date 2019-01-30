@@ -11,44 +11,44 @@ namespace Bmack\Kart\Tests;
  */
 
 use Bmack\Kart\Dispatcher;
-use Bmack\Kart\Examples\ExternalFulfillmentTask;
+use Bmack\Kart\Examples\ExternalFulfillmentEvent;
 use Bmack\Kart\RuntimeListenerProvider;
 use PHPUnit\Framework\TestCase;
 
-class ExternalFulfillmentTaskTest extends TestCase
+class ExternalFulfillmentEventTest extends TestCase
 {
     /**
      * @test
      */
     public function properlyModifyPayload()
     {
-        $listener1 = function (ExternalFulfillmentTask $t) {
-            if ($t->getJobNumber() > 0) {
+        $listener1 = function (ExternalFulfillmentEvent $e) {
+            if ($e->getJobNumber() > 0) {
                 echo 'My listener works.';
             }
-            return $t;
+            return $e;
         };
 
-        $listener2 = function (ExternalFulfillmentTask $t) {
-            if ($t->getJobNumber() === 2) {
+        $listener2 = function (ExternalFulfillmentEvent $e) {
+            if ($e->getJobNumber() === 2) {
                 echo 'Running number two and thats the max you can get.';
-                return $t->stopPropagation();
+                return $e->stopPropagation();
             }
-            return $t;
+            return $e;
         };
 
-        $listener3 = function (ExternalFulfillmentTask $t) {
-            if ($t->getJobNumber() === -1) {
+        $listener3 = function (ExternalFulfillmentEvent $e) {
+            if ($e->getJobNumber() === -1) {
                 echo 'Never call -1 - this is ugly';
             }
-            return $t;
+            return $e;
         };
 
-        $listener4 = function (ExternalFulfillmentTask $t) {
-            if ($t->getJobNumber() > 100) {
+        $listener4 = function (ExternalFulfillmentEvent $e) {
+            if ($e->getJobNumber() > 100) {
                 echo 'Cannot process jobs with a number higher than 100';
             }
-            return $t;
+            return $e;
         };
 
         $runtimeProvider = new RuntimeListenerProvider();
@@ -62,21 +62,21 @@ class ExternalFulfillmentTaskTest extends TestCase
         // suppress output
         ob_start(function () {
         });
-        $dispatcher->process(new ExternalFulfillmentTask(1));
+        $dispatcher->dispatch(new ExternalFulfillmentEvent(1));
         $result = ob_get_clean();
         $this->assertEquals($result, 'My listener works.');
 
         // suppress output
         ob_start(function () {
         });
-        $dispatcher->process(new ExternalFulfillmentTask(2));
+        $dispatcher->dispatch(new ExternalFulfillmentEvent(2));
         $result = ob_get_clean();
         $this->assertEquals($result, 'My listener works.Running number two and thats the max you can get.');
 
         // suppress output
         ob_start(function () {
         });
-        $dispatcher->process(new ExternalFulfillmentTask(0));
+        $dispatcher->dispatch(new ExternalFulfillmentEvent(0));
         $result = ob_get_clean();
         // No listener responded
         $this->assertEquals($result, '');

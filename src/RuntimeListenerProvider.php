@@ -10,7 +10,6 @@ namespace Bmack\Kart;
  * file that is distributed with this source code.
  */
 
-use Psr\EventDispatcher\EventInterface;
 use Psr\EventDispatcher\ListenerProviderInterface;
 
 /**
@@ -22,7 +21,6 @@ class RuntimeListenerProvider implements ListenerProviderInterface
     protected $listeners = [];
 
     /**
-     * Should the detection if it's a valid listener done here or later?
      * @param $listener
      */
     public function addListener($listener)
@@ -30,7 +28,10 @@ class RuntimeListenerProvider implements ListenerProviderInterface
         $this->listeners[] = $listener;
     }
 
-    public function getListenersForEvent(EventInterface $event): iterable
+    /**
+     * @inheritdoc
+     */
+    public function getListenersForEvent(object $event): iterable
     {
         foreach ($this->listeners as $listener) {
             $eventType = null;

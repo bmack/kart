@@ -10,30 +10,23 @@ namespace Bmack\Kart\Examples;
  * file that is distributed with this source code.
  */
 
-use Psr\EventDispatcher\TaskInterface;
-
 /**
- * Modifies payload shipped with a task. VERY generic
+ * A generic message with some payload
  */
-class PayloadTask implements TaskInterface
+class PayloadMessageEvent
 {
     /**
-     * @var array
+     * @var mixed
      */
     private $payload;
 
-    public function __construct(array $payload = null)
+    public function __construct($payload = null)
     {
-        $this->payload = $payload ?? [];
+        $this->payload = $payload;
     }
 
     public function getPayload()
     {
         return $this->payload;
-    }
-
-    public function setPayload(array $payload)
-    {
-        $this->payload = $payload;
     }
 }
