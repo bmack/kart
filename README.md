@@ -1,7 +1,5 @@
 # Simple implementation for PSR-14
 
-This repository is based on PHP-FIG PSR-14 v0.7.
-
 ## What does it do?
 
 This package ships with a simple dispatcher, and a listener provider which can be populated during
